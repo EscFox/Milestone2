@@ -72,6 +72,26 @@ class ImageObject {
   }
 }
 
+
+class Person extends ImageObject{
+  firstName="";
+  lastName="";
+  dob="";
+  constructor(imgSrc,x, y, width, height){
+    super(imgSrc, x, y, width, height);
+  }
+}
+
+class Corporation extends ImageObject{
+  Name="";
+  yearCreation="";
+
+  constructor(imgSrc,x, y, width, height){
+    super(imgSrc, x, y, width, height);
+  }
+}
+
+
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -89,13 +109,15 @@ const pplIcon = document.getElementById("PersonImg");
 const corpIcon = document.getElementById("CompanyImg");
 
 pplIcon.addEventListener("click", function () {
-  const image = new ImageObject(pplImg, 10, 10, 30, 30);
+  //const image = new ImageObject(pplImg, 10, 10, 30, 30);
+  const image = new Person(pplImg, 10, 10, 30, 30);
   imageObjects.push(image);
   drawCanvas();
 });
 
 corpIcon.addEventListener("click", function () {
-  const image = new ImageObject(corpImg, 10, 10, 30, 30);
+  // const image = new ImageObject(corpImg, 10, 10, 30, 30);
+  const image = new Corporation(corpImg, 10, 10, 30, 30);
   imageObjects.push(image);
   drawCanvas();
 });
@@ -109,7 +131,7 @@ canvas.addEventListener("dblclick", handleDoubleClick);
 canvas.addEventListener("touchstart", handleMouseDown);
 canvas.addEventListener("touchmove", handleMouseMove);
 canvas.addEventListener("touchend", handleMouseUp);
-canvas.addEventListener("dblclick", handleDoubleClick);
+// canvas.addEventListener("dblclick", handleDoubleClick);
 
 // Función para manejar el inicio del arrastre
 function handleMouseDown(event) {

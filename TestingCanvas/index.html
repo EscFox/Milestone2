@@ -4,29 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">   -->
+
     <style>
         #myCanvas{
             background-color: antiquewhite;
-            width: 50%;
+            width: 80%;
             height: 50%;
         }
         img{
             width: 25px;
             height: 25px;
+            margin: 3px;
         }
     </style>
 </head>
 <body>
-    <section>
-        <!-- <button id="addCoBtnId">Add Company</button>
-        <button id="addPrsBtnId">Add Person</button> -->
-        <img id="PersonImg" src="./profile.png"> 
-        <img id="CompanyImg" src="./building.png"> 
-    </section>
-    
-    <canvas id="myCanvas" width="400" height="200"></canvas>
-    
+    <section class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <img id="PersonImg" src="./profile.png"> 
+            <img id="CompanyImg" src="./building.png">
+            <img id="CrossedLineImg" src="./nodes.png"> 
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <canvas id="myCanvas" width="400" height="200"></canvas>
+            </div>
+            <div id="formContainer col-md-12">
+                <form>
+                    <label for="imgType" id="imgType">Etiqueta Principal</label>
+            
+                    <div class="mb-3">
+                        <label for="idImage" class="form-label">ID:</label>
+                        <input type="text" class="form-control" id="idImage" value="" disabled>
+                        <input type="text" class="form-control" id="perCorp" value="" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idFirstName" class="form-label">First Name:</label>
+                        <input type="text" class="form-control" id="idFirstName" value="" disabled>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="idLastName" class="form-label">Last Name:</label>
+                        <input type="text" class="form-control" id="idLastName" value="" disabled>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="idDob" class="form-label">Date Of Birth:</label>
+                        <input type="text" class="form-control" id="idDob" value="" disabled>
+                    </div>
 
-    <script src="./index6.js" defer></script>
+                    <div class="mb-3">
+                        <label for="idCorpName" class="form-label">Corporation Name:</label>
+                        <input type="text" class="form-control" id="idCorpName" value="" disabled>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="idYearFound" class="form-label">Year Founded:</label>
+                        <input type="text" class="form-control" id="idYearFound" value="" disabled>
+                    </div>
+            
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-secondary">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="updateInfo()">Aceptar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </section>
+      
+      
+    <div id="contextMenu" style="display: none;">
+        <ul>
+          <li id="linkToMenuItem">Link To</li>
+          <li id="deleteMenuItem">Delete</li>
+        </ul>
+    </div>
+
+    <script src="./index7.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
 </body>
 </html>
