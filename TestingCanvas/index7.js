@@ -60,7 +60,7 @@ class ImageObject {
 
   // Función para obtener el título truncado a las primeras tres letras
   getTrimmedTitle() {
-    return this.title.slice(0, 3);
+    return this.title.slice(0, 5);
   }
 
   // Función para agregar o editar el título al hacer doble clic en la imagen
@@ -191,9 +191,7 @@ function handleMouseDown(event) {
           }
         }
       }
-    }
-  
-  
+    }  
 }
 
 function drawLine(startPoint, endPoint) {

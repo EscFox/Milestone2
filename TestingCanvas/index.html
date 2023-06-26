@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">   -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
 
     <style>
         #myCanvas{
             background-color: antiquewhite;
             width: 80%;
-            height: 50%;
+            height: 100%;
         }
         img{
             width: 25px;
@@ -21,9 +21,9 @@
     </style>
 </head>
 <body>
-    <section class="container">
+    <section class="container-fluid">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-8">
             <img id="PersonImg" src="./profile.png"> 
             <img id="CompanyImg" src="./building.png">
             <img id="CrossedLineImg" src="./nodes.png"> 
@@ -34,44 +34,46 @@
                 <canvas id="myCanvas" width="400" height="200"></canvas>
             </div>
             <div id="formContainer col-md-12">
-                <form>
+                <form class="form-small">
                     <label for="imgType" id="imgType">Etiqueta Principal</label>
-            
+                    
                     <div class="mb-3">
-                        <label for="idImage" class="form-label">ID:</label>
-                        <input type="text" class="form-control" id="idImage" value="" disabled>
-                        <input type="text" class="form-control" id="perCorp" value="" disabled>
+                      <label for="idImage" class="form-label">ID:</label>
+                      <input type="text" class="form-control form-control-sm" id="idImage" value="" disabled>
+                      <input type="text" class="form-control form-control-sm" id="perCorp" value="" disabled>
                     </div>
+                    
                     <div class="mb-3">
-                        <label for="idFirstName" class="form-label">First Name:</label>
-                        <input type="text" class="form-control" id="idFirstName" value="" disabled>
+                      <label for="idFirstName" class="form-label">First Name:</label>
+                      <input type="text" class="form-control form-control-sm" id="idFirstName" value="" disabled>
                     </div>
-            
+                  
                     <div class="mb-3">
-                        <label for="idLastName" class="form-label">Last Name:</label>
-                        <input type="text" class="form-control" id="idLastName" value="" disabled>
+                      <label for="idLastName" class="form-label">Last Name:</label>
+                      <input type="text" class="form-control form-control-sm" id="idLastName" value="" disabled>
                     </div>
-            
+                  
                     <div class="mb-3">
-                        <label for="idDob" class="form-label">Date Of Birth:</label>
-                        <input type="text" class="form-control" id="idDob" value="" disabled>
+                      <label for="idDob" class="form-label">Date Of Birth:</label>
+                      <input type="text" class="form-control form-control-sm" id="idDob" value="" disabled>
                     </div>
-
+                  
                     <div class="mb-3">
-                        <label for="idCorpName" class="form-label">Corporation Name:</label>
-                        <input type="text" class="form-control" id="idCorpName" value="" disabled>
+                      <label for="idCorpName" class="form-label">Corporation Name:</label>
+                      <input type="text" class="form-control form-control-sm" id="idCorpName" value="" disabled>
                     </div>
-            
+                  
                     <div class="mb-3">
-                        <label for="idYearFound" class="form-label">Year Founded:</label>
-                        <input type="text" class="form-control" id="idYearFound" value="" disabled>
+                      <label for="idYearFound" class="form-label">Year Founded:</label>
+                      <input type="text" class="form-control form-control-sm" id="idYearFound" value="" disabled>
                     </div>
-            
+                  
                     <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-secondary">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="updateInfo()">Aceptar</button>
+                      <button type="button" class="btn btn-secondary btn-sm">Cancelar</button>
+                      <button type="button" class="btn btn-primary btn-sm" onclick="updateInfo()">Aceptar</button>
                     </div>
-                </form>
+                  </form>
+                  
             </div>
         </div>
       </section>
