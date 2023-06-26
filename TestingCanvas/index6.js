@@ -11,11 +11,15 @@ class ImageObject {
     this.dragStartY = 0;
     this.offsetX = 0;
     this.offsetY = 0;
+    this.title = "";
   }
 
   // Función para dibujar la imagen en el canvas
   draw(ctx) {
     ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    ctx.font = "12px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(this.getTrimmedTitle(), this.x, this.y + this.height + 12);
   }
 
   // Función para verificar si el punto (x, y) está dentro de la imagen
@@ -52,23 +56,19 @@ class ImageObject {
   handleDragEnd() {
     this.isDragging = false;
   }
-}
 
-class Person extends ImageObject{
-  firstName="";
-  lastName="";
-  dob="";
-  constructor(imgSrc,x, y, width, height){
-    super(imgSrc, x, y, width, height);
+  // Función para obtener el título truncado a las primeras tres letras
+  getTrimmedTitle() {
+    return this.title.slice(0, 3);
   }
-}
 
-class Corporation extends ImageObject{
-  Name="";
-  yearCreation="";
-
-  constructor(imgSrc,x, y, width, height){
-    super(imgSrc, x, y, width, height);
+  // Función para agregar o editar el título al hacer doble clic en la imagen
+  handleDoubleClick(event) {
+    const newTitle = prompt("Ingrese el título de la imagen:");
+    if (newTitle !== null) {
+      this.title = newTitle;
+      drawCanvas();
+    }
   }
 }
 
@@ -89,27 +89,27 @@ const pplIcon = document.getElementById("PersonImg");
 const corpIcon = document.getElementById("CompanyImg");
 
 pplIcon.addEventListener("click", function () {
-  //const image = new ImageObject(pplImg, 10, 10, 30, 30);
-  const image = new Person(pplImg, 10, 10, 30, 30);
+  const image = new ImageObject(pplImg, 10, 10, 30, 30);
   imageObjects.push(image);
   drawCanvas();
 });
 
 corpIcon.addEventListener("click", function () {
-  // const image = new ImageObject(corpImg, 10, 10, 30, 30);
-  const image = new Corporation(corpImg, 10, 10, 30, 30);
+  const image = new ImageObject(corpImg, 10, 10, 30, 30);
   imageObjects.push(image);
   drawCanvas();
 });
 
-// Agregar eventos para el arrastre de las imágenes
+// Agregar eventos para el arrastre y el doble clic de las imágenes
 canvas.addEventListener("mousedown", handleMouseDown);
 canvas.addEventListener("mousemove", handleMouseMove);
 canvas.addEventListener("mouseup", handleMouseUp);
+canvas.addEventListener("dblclick", handleDoubleClick);
 
 canvas.addEventListener("touchstart", handleMouseDown);
 canvas.addEventListener("touchmove", handleMouseMove);
 canvas.addEventListener("touchend", handleMouseUp);
+canvas.addEventListener("dblclick", handleDoubleClick);
 
 // Función para manejar el inicio del arrastre
 function handleMouseDown(event) {
@@ -139,6 +139,19 @@ function handleMouseUp(event) {
   for (const image of imageObjects) {
     if (image.isDragging) {
       image.handleDragEnd();
+      break;
+    }
+  }
+}
+
+// Función para manejar el doble clic
+function handleDoubleClick(event) {
+  const offsetX = event.pageX - canvas.offsetLeft;
+  const offsetY = event.pageY - canvas.offsetTop;
+
+  for (const image of imageObjects) {
+    if (image.isPointInside(offsetX, offsetY)) {
+      image.handleDoubleClick(event);
       break;
     }
   }
