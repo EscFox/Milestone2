@@ -124,7 +124,11 @@ canvas.height = canvasRect.height * pixelRatio;
 ctx.scale(pixelRatio, pixelRatio);
 
 const imageObjects = []; // Array para almacenar las imágenes
+const linkMatrix =[];
 let figId=0;
+
+
+
 const pplIcon = document.getElementById("PersonImg");
 const corpIcon = document.getElementById("CompanyImg");
 const linkedLine = document.getElementById("CrossedLineImg");
@@ -163,12 +167,28 @@ function drawConnection(e){
   connectionEnabled = true;
 }
 
+//function to add null connections between the objects.
+function initializeMatrix(newValue) {
+  console.log(`Array Length: ${linkMatrix.length}`);
+  
+  for (let i = 0; i < linkMatrix.length; i++) {
+
+    console.log(`i: ${i}`);
+    console.log(linkMatrix[i]);
+    console.log(linkMatrix[i].length);
+
+    for (let j = linkMatrix[i].length; j < linkMatrix.length; j++) {
+      console.log(`j: ${j}`);
+      linkMatrix[i].push(newValue);
+    }
+  }
+}
 
 // Función para manejar el inicio del arrastre
 function handleMouseDown(event) {
   const offsetX = event.pageX - canvas.offsetLeft;
   const offsetY = event.pageY - canvas.offsetTop;
-
+  
     //the event is called to move the image
   
     for (const image of imageObjects) {
@@ -352,8 +372,6 @@ function drawCanvas() {
     image.draw(ctx);
   }
 }
-
-
 
 // Ejemplo de uso inicial
 const pplImg = new Image();
