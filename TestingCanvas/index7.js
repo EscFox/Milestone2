@@ -109,7 +109,10 @@ class Corporation extends ImageObject{
 }
 
 class connectionLine extends ImageObject{
+  imageOrig;
+  imageDest;
 
+  
 }
 
 const canvas = document.getElementById("myCanvas");
@@ -124,7 +127,7 @@ canvas.height = canvasRect.height * pixelRatio;
 ctx.scale(pixelRatio, pixelRatio);
 
 const imageObjects = []; // Array para almacenar las imágenes
-const linkMatrix =[];
+const linkMatrix =[];//Array to add the connection between objects.
 let figId=0;
 
 
@@ -137,6 +140,10 @@ pplIcon.addEventListener("click", function () {
   const image = new Person(figId,pplImg, 10, 10, 30, 30);
   figId++;
   imageObjects.push(image);
+
+  linkMatrix.push([]);
+  initializeMatrix(0);
+  
   drawCanvas();
 });
 
@@ -144,6 +151,10 @@ corpIcon.addEventListener("click", function () {
   const image = new Corporation(figId,corpImg, 10, 10, 30, 30);
   figId++;
   imageObjects.push(image);
+
+  linkMatrix.push([]);
+  initializeMatrix(0);
+
   drawCanvas();
 });
 
@@ -193,6 +204,8 @@ function handleMouseDown(event) {
   
     for (const image of imageObjects) {
       if (image.isPointInside(offsetX, offsetY)) {
+        
+        //connectionEnabled is enabled when user clicks on the line icon to draw a line between objects.
         if(connectionEnabled == false){
           image.handleDragStart(event);
           break;
@@ -373,7 +386,7 @@ function drawCanvas() {
   }
 }
 
-// Ejemplo de uso inicial
+// Ppl and Corp icons
 const pplImg = new Image();
 pplImg.src = "./profile.png";
 
