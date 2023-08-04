@@ -1,9 +1,13 @@
 // Objeto para representar una imagen en el canvas
+const iconWidth=30;
+const iconHeight=30;
+
 class ImageObject {
   constructor(image, x, y, width, height) {
     this.image = image;
     this.x = x;
     this.y = y;
+    
     this.width = width;
     this.height = height;
     this.isDragging = false;
@@ -12,7 +16,10 @@ class ImageObject {
     this.offsetX = 0;
     this.offsetY = 0;
     this.title = "";
+    this.centerX=this.x+this.width/2;
+    this.centerY=this.y+this.height/2;
   }
+
 
   // Función para dibujar la imagen en el canvas
   draw(ctx) {
@@ -49,6 +56,10 @@ class ImageObject {
       const currentY = event.pageY - canvas.offsetTop;
       this.x = currentX - this.offsetX;
       this.y = currentY - this.offsetY;
+
+      this.centerX=this.x+this.width/2;
+      this.centerY=this.y+this.height/2;
+
       drawCanvas();
     }
   }
@@ -70,6 +81,11 @@ class ImageObject {
       this.title = newTitle;
       drawCanvas();
     }
+  }
+
+  updateCenter(){
+    this.centerX=x+this.width/2;
+    this.centerY=y+this.height/2;
   }
 }
 
@@ -108,10 +124,14 @@ class Corporation extends ImageObject{
 
 }
 
-class connectionLine extends ImageObject{
-  imageOrig;
-  imageDest;
+class connectionLine{
+  imageOrig="";
+  imageDest="";
 
+  constructor(tImageOrig,tImageDest){
+    this.imageOrig=tImageOrig;
+    this.imageDest=tImageDest;
+  }
   
 }
 
@@ -137,7 +157,7 @@ const corpIcon = document.getElementById("CompanyImg");
 const linkedLine = document.getElementById("CrossedLineImg");
 
 pplIcon.addEventListener("click", function () {
-  const image = new Person(figId,pplImg, 10, 10, 30, 30);
+  const image = new Person(figId,pplImg, 10, 10, iconWidth, iconHeight);
   figId++;
   imageObjects.push(image);
 
@@ -148,7 +168,7 @@ pplIcon.addEventListener("click", function () {
 });
 
 corpIcon.addEventListener("click", function () {
-  const image = new Corporation(figId,corpImg, 10, 10, 30, 30);
+  const image = new Corporation(figId,corpImg, 10, 10, iconWidth, iconHeight);
   figId++;
   imageObjects.push(image);
 
@@ -173,6 +193,7 @@ linkedLine.addEventListener("click",drawConnection);
 let startPoint = null;
 let endPoint = null;
 let connectionEnabled = false;
+let newLine="";
 
 function drawConnection(e){
   connectionEnabled = true;
@@ -199,6 +220,9 @@ function initializeMatrix(newValue) {
 function handleMouseDown(event) {
   const offsetX = event.pageX - canvas.offsetLeft;
   const offsetY = event.pageY - canvas.offsetTop;
+  let imageOrig="";
+  let imageDest="";
+
   
     //the event is called to move the image
   
@@ -213,14 +237,29 @@ function handleMouseDown(event) {
         //otherwise it's to select the objects to draw the line.
         else{
           if (startPoint === null) {
-              startPoint = { x: offsetX, y: offsetY };
+            //  startPoint = { x: offsetX, y: offsetY };
+              
+              imageOrig= image;
+   
+              startPoint={x: imageOrig.centerX,y:imageOrig.centerY};
+             // console.log(imageOrig);
           } 
           else if (endPoint === null) {
-              endPoint = { x: offsetX, y: offsetY };
+              // endPoint = { x: offsetX, y: offsetY };
+              imageDest= image;
+
+              endPoint={x: imageDest.centerX,y:imageDest.centerY};
+
+
               drawLine(startPoint, endPoint);
               startPoint = null;
               endPoint = null;
               connectionEnabled = false;
+              
+              //console.log(imageDest);
+              newLine = new connectionLine(imageOrig,imageDest);
+              console.log(newLine.imageOrig);
+              console.log(newLine.imageDest);
           }
         }
       }
