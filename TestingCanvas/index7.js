@@ -128,11 +128,31 @@ class connectionLine{
   imageOrig="";
   imageDest="";
 
-  constructor(tImageOrig,tImageDest){
-    this.imageOrig=tImageOrig;
-    this.imageDest=tImageDest;
-  }
+  // constructor(imageOrig,imageDest){
+  //   this.imageOrig=imageOrig;
+  //   this.imageDest=imageDest;
+  // }
   
+  setImageOrig(imageOrig){
+    this.imageOrig=imageOrig;
+  }
+
+  setImageDest(imageDest){
+    this.imageDest=imageDest;
+  }
+
+  // drawLine(startPoint, endPoint) {
+  drawLine(ctx) {
+    console.log(`imageOrig.Centerx${this.imageOrig}`);
+
+    ctx.beginPath();
+    ctx.moveTo(this.imageOrig.centerX, this.imageOrig.centerY);
+    ctx.lineTo(this.imageDest.centerX, this.imageDest.centerY);
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  } 
+
 }
 
 const canvas = document.getElementById("myCanvas");
@@ -147,6 +167,7 @@ canvas.height = canvasRect.height * pixelRatio;
 ctx.scale(pixelRatio, pixelRatio);
 
 const imageObjects = []; // Array para almacenar las imágenes
+const linesObjects=[];
 const linkMatrix =[];//Array to add the connection between objects.
 let figId=0;
 
@@ -222,6 +243,7 @@ function handleMouseDown(event) {
   const offsetY = event.pageY - canvas.offsetTop;
   let imageOrig="";
   let imageDest="";
+  // let newLine="";
 
   
     //the event is called to move the image
@@ -238,11 +260,12 @@ function handleMouseDown(event) {
         else{
           if (startPoint === null) {
             //  startPoint = { x: offsetX, y: offsetY };
-              
+              newLine=new connectionLine();
               imageOrig= image;
+              newLine.setImageOrig(imageOrig);
    
               startPoint={x: imageOrig.centerX,y:imageOrig.centerY};
-             // console.log(imageOrig);
+              console.log(`newLineOrig: ${imageOrig}`);
           } 
           else if (endPoint === null) {
               // endPoint = { x: offsetX, y: offsetY };
@@ -250,30 +273,36 @@ function handleMouseDown(event) {
 
               endPoint={x: imageDest.centerX,y:imageDest.centerY};
 
+              //console.log(imageDest);
+              //newLine = new connectionLine(imageOrig,imageDest);
+              newLine.setImageDest(imageDest);
 
-              drawLine(startPoint, endPoint);
+              console.log(`newLineOrig: ${newLine.imageOrig}`);
+              console.log(`newLineDest:${newLine.imageDest}`);
+
+              // newLine.drawLine(startPoint,endPoint);
+              newLine.drawLine(ctx);
+
+              //drawLine(startPoint, endPoint);
               startPoint = null;
               endPoint = null;
               connectionEnabled = false;
               
-              //console.log(imageDest);
-              newLine = new connectionLine(imageOrig,imageDest);
-              console.log(newLine.imageOrig);
-              console.log(newLine.imageDest);
+              linesObjects.push(newLine);
           }
         }
       }
     }  
 }
 
-function drawLine(startPoint, endPoint) {
-  ctx.beginPath();
-  ctx.moveTo(startPoint.x, startPoint.y);
-  ctx.lineTo(endPoint.x, endPoint.y);
-  ctx.strokeStyle = "black";
-  ctx.lineWidth = 2;
-  ctx.stroke();
-}
+// function drawLine(startPoint, endPoint) {
+//   ctx.beginPath();
+//   ctx.moveTo(startPoint.x, startPoint.y);
+//   ctx.lineTo(endPoint.x, endPoint.y);
+//   ctx.strokeStyle = "black";
+//   ctx.lineWidth = 2;
+//   ctx.stroke();
+// }
 
 // Función para manejar el movimiento del arrastre
 function handleMouseMove(event) {
@@ -423,6 +452,11 @@ function drawCanvas() {
   for (const image of imageObjects) {
     image.draw(ctx);
   }
+
+  for (const line of linesObjects){
+    line.drawLine(ctx);
+  }
+
 }
 
 // Ppl and Corp icons
