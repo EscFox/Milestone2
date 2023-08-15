@@ -30,51 +30,49 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <canvas id="myCanvas" ></canvas>
-            </div>
-            <div id="formContainer col-md-12">
-                <form class="form-small">
-                    <label for="imgType" id="imgType">Etiqueta Principal</label>
-                    
-                    <div class="mb-3">
-                      <label for="idImage" class="form-label">ID:</label>
-                      <input type="text" class="form-control form-control-sm" id="idImage" value="" disabled>
-                      <input type="text" class="form-control form-control-sm" id="perCorp" value="" disabled>
-                    </div>
-                    
-                    <div class="mb-3">
-                      <label for="idFirstName" class="form-label">First Name:</label>
-                      <input type="text" class="form-control form-control-sm" id="idFirstName" value="" disabled>
-                    </div>
-                  
-                    <div class="mb-3">
-                      <label for="idLastName" class="form-label">Last Name:</label>
-                      <input type="text" class="form-control form-control-sm" id="idLastName" value="" disabled>
-                    </div>
-                  
-                    <div class="mb-3">
-                      <label for="idDob" class="form-label">Date Of Birth:</label>
-                      <input type="text" class="form-control form-control-sm" id="idDob" value="" disabled>
-                    </div>
-                  
-                    <div class="mb-3">
-                      <label for="idCorpName" class="form-label">Corporation Name:</label>
-                      <input type="text" class="form-control form-control-sm" id="idCorpName" value="" disabled>
-                    </div>
-                  
-                    <div class="mb-3">
-                      <label for="idYearFound" class="form-label">Year Founded:</label>
-                      <input type="text" class="form-control form-control-sm" id="idYearFound" value="" disabled>
-                    </div>
-                  
-                    <div class="d-grid gap-2">
+          <div class="col-md-12">
+              <canvas id="myCanvas"></canvas>
+          </div>
+          <div id="formContainer" class="col-md-12">
+              <form class="form-small">
+                  <h2>Entity Information</h2>
+                  <label for="imgType" id="imgType">Etiqueta Principal</label>
+                  <table class="form-table">
+                      <tr>
+                          <td><label for="idImage" class="form-label">ID:</label></td>
+                          <td>
+                              <input type="text" class="form-control form-control-sm" id="idImage" value="" disabled>
+                              <input type="text" class="form-control form-control-sm" id="perCorp" value="" disabled>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td><label for="idFirstName" class="form-label">First Name:</label></td>
+                          <td><input type="text" class="form-control form-control-sm" id="idFirstName" value="" disabled></td>
+                      </tr>
+                      <tr>
+                          <td><label for="idLastName" class="form-label">Last Name:</label></td>
+                          <td><input type="text" class="form-control form-control-sm" id="idLastName" value="" disabled></td>
+                      </tr>
+                      <tr>
+                          <td><label for="idDob" class="form-label">Date Of Birth:</label></td>
+                          <td><input type="text" class="form-control form-control-sm" id="idDob" value="" disabled></td>
+                      </tr>
+                      <tr>
+                          <td><label for="idCorpName" class="form-label">Corporation Name:</label></td>
+                          <td><input type="text" class="form-control form-control-sm" id="idCorpName" value="" disabled></td>
+                      </tr>
+                      <tr>
+                          <td><label for="idYearFound" class="form-label">Year Founded:</label></td>
+                          <td><input type="text" class="form-control form-control-sm" id="idYearFound" value="" disabled></td>
+                      </tr>
+                  </table>
+                  <div class="d-grid gap-2">
                       <button type="button" class="btn btn-secondary btn-sm">Cancelar</button>
                       <button type="button" class="btn btn-primary btn-sm" onclick="updateInfo()">Aceptar</button>
-                    </div>
-                  </form>
-            </div>
-        </div>
+                  </div>
+              </form>
+          </div>
+      </div>
       </section>
       
       

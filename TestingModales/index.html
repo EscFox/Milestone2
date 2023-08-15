@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    
+    </style>
+</head>
+<body>
+
+<!-- Modales -->
+<div class="modal fade" >
+    <div class="modal-dialog" id="modal1">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tutorial Explicatorio</h5>
+            </div>
+            <div class="modal-body">
+                1- "Agrega bien un individuo o empresa pinchando sobre el icono"
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal1-ok">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tutorial Explicatorio</h5>
+            </div>
+            <div class="modal-body">
+                2- "Desplaza el icono sobre el canvas a la posición que desees"
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal2-ok">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal3">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tutorial Explicatorio</h5>
+            </div>
+            <div class="modal-body">
+                3- "Doble clic sobre el icono para agregar una etiqueta"
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal3-ok">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal4">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tutorial Explicatorio</h5>
+            </div>
+            <div class="modal-body">
+                4- "Une los iconos pinchando sobre el icono de la línea y luego sobre los iconos en el canvas que quieras unir"
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal4-ok">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal5">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tutorial Explicatorio</h5>
+            </div>
+            <div class="modal-body">
+                5- "Agrega la información relevante sobre cada icono"
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal5-ok">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#modal1').modal('show');
+    });
+
+    // Función para avanzar al siguiente modal
+    function showNextModal(currentModalId, nextModalId) {
+        $(currentModalId).modal('hide');
+        $(nextModalId).modal('show');
+    }
+
+    // Asignar eventos para avanzar al siguiente modal al hacer clic en OK
+    $('#modal1-ok').click(function() {
+        showNextModal('#modal1', '#modal2');
+    });
+    $('#modal2-ok').click(function() {
+        showNextModal('#modal2', '#modal3'); // Cambiar a '#modal3' para la siguiente ventana
+    });
+
+    $('#modal3-ok').click(function() {
+        showNextModal('#modal3', '#modal4'); // Cambiar a '#modal3' para la siguiente ventana
+    });
+
+    $('#modal4-ok').click(function() {
+        showNextModal('#modal4', '#modal5'); // Cambiar a '#modal3' para la siguiente ventana
+    });
+    
+    $('#modal5-ok').click(function() {
+        $('#modal5').modal('hide');
+    });
+    // Agregar más eventos aquí para los otros modales
+    document.addEventListener('mousemove', function(e) {
+        var x = e.clientX; // Coordenada horizontal del ratón
+        var y = e.clientY; // Coordenada vertical del ratón
+        console.log('Posición del ratón:', x, y);
+    });
+</script>
+
+</body>
+</html>

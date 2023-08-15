@@ -1,0 +1,20 @@
+/* Estilos para adaptar los modales a dispositivos móviles */
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 90%;
+    }
+}
+
+/* .modal-dialog { */
+    /* position: absolute; */
+    /* left: 100px; 
+    top: 50px;  */
+/* } */
+
+#modal1{
+    position: absolute;
+
+    top: 50px; /* Adjust this value for vertical positioning */
+    left: 250px; /* Adjust this value for horizontal positioning */
+}
+

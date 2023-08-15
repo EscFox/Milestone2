@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
+    
 </head>
 <body>
     <nav class="menu">
@@ -16,5 +18,29 @@
           <li><a href="#">Contact Us</a></li>
         </ul>
       </nav>
+    
+      <div class="container mt-5">
+        <h2>Formulario de Sugerencias</h2>
+        <form action="/ruta-de-envio" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Ingresa tu email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="sugerencia">Sugerencia:</label>
+                <textarea class="form-control" id="sugerencia" placeholder="Ingresa tu sugerencia" name="sugerencia" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
